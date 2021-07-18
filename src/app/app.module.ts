@@ -7,6 +7,7 @@ import { FormularioSubjectComponent } from './formulario-subject/formulario-subj
 import { GridSubjectComponent } from './grid-subject/grid-subject.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SmartSubjectComponent } from './smart-subject/smart-subject.component';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,12 @@ import { SmartSubjectComponent } from './smart-subject/smart-subject.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [
+    NgbActiveModal
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

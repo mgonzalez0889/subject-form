@@ -1,9 +1,14 @@
 <div>
   <div class="col-6">
-    <button class="btn btn-success w-50" (click)="onNew()">Nuevo</button>
+    <button class="btn btn-success w-50"
+            data-bs-toggle="modal"
+            data-bs-target="#CREATE"
+            data-bs-whatever="@mdo"
+            (click)="onNew()">Nuevo</button>
   </div>
   <div class="col">
     <app-grid-subject></app-grid-subject>
+    <!--<app-formulario-subject *ngIf="show"></app-formulario-subject>-->
   </div>
 
 </div>

@@ -1,21 +1,27 @@
 import { Injectable } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
+import {BehaviorSubject, Observable, Subject} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+
+interface FormObservable {
+  type?: boolean;
+  target: string;
+  payload?: any;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class SubjectService {
-  public subject: Subject<{type?: boolean, target: string, payload?: any}> = new Subject<{type: boolean, target: string, payload?: any}>();
+  public subject: BehaviorSubject<FormObservable> = new BehaviorSubject<FormObservable>( {type: true, target: 'CREATE'} );
   constructor(
     private http: HttpClient
   ) { }
 
-  public newForm(target: string) {
-    this.subject.next({target});
+  public newForm(type: boolean, target: string): void {
+    this.subject.next({type, target});
   }
 
-  public editForm(target: string, payload: any) {
+  public editForm(target: string, payload: any): void {
     // console.log({target, payload});
     this.subject.next({target, payload});
   }

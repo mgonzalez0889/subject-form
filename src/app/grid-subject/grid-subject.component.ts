@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {SubjectService} from '../services/subject.service';
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {FormularioSubjectComponent} from "../formulario-subject/formulario-subject.component";
 
 @Component({
   selector: 'app-grid-subject',
@@ -9,7 +11,8 @@ import {SubjectService} from '../services/subject.service';
 export class GridSubjectComponent implements OnInit {
 
   constructor(
-    private subjectSvr: SubjectService
+    private subjectSvr: SubjectService,
+    private modalService: NgbModal,
   ) { }
 
   ngOnInit(): void {
@@ -22,6 +25,8 @@ export class GridSubjectComponent implements OnInit {
       status: true
     };
     this.subjectSvr.editForm('EDIT', data);
+    const modalRef = this.modalService.open(FormularioSubjectComponent);
+    modalRef.componentInstance.name = data.name;
   }
 
 }
